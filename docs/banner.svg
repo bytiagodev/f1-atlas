@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#15151e"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="redGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e10600;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#e10600;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#e10600;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e10600;stop-opacity:0"/>
+      <stop offset="15%" style="stop-color:#e10600;stop-opacity:1"/>
+      <stop offset="85%" style="stop-color:#e10600;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e10600;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="280" fill="url(#bg)" rx="12"/>
+
+  <!-- Subtle grid lines -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="0.5">
+    <line x1="0" y1="70" x2="900" y2="70"/>
+    <line x1="0" y1="140" x2="900" y2="140"/>
+    <line x1="0" y1="210" x2="900" y2="210"/>
+    <line x1="225" y1="0" x2="225" y2="280"/>
+    <line x1="450" y1="0" x2="450" y2="280"/>
+    <line x1="675" y1="0" x2="675" y2="280"/>
+  </g>
+
+  <!-- Red glow strip -->
+  <rect x="0" y="105" width="900" height="70" fill="url(#redGlow)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="100" width="900" height="2" fill="url(#line)"/>
+
+  <!-- F1 ATLAS text -->
+  <text x="450" y="155" text-anchor="middle" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="72" letter-spacing="8" fill="#ffffff">
+    F1 <tspan fill="#e10600">ATLAS</tspan>
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="178" width="900" height="2" fill="url(#line)"/>
+
+  <!-- Tagline -->
+  <text x="450" y="215" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="16" letter-spacing="6" fill="#888899">
+    EVERY SEASON · EVERY RACE · EVERY DRIVER
+  </text>
+
+  <!-- Small decorative elements -->
+  <circle cx="135" cy="140" r="3" fill="#e10600" opacity="0.6"/>
+  <circle cx="765" cy="140" r="3" fill="#e10600" opacity="0.6"/>
+</svg>
