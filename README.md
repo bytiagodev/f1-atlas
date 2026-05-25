@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>Browse every Formula 1 season — race calendars, results, qualifying, standings, and driver profiles.</strong>
+  <strong>Browse every Formula 1 season: race calendars, results, qualifying, standings, and driver profiles.</strong>
 </p>
 
 <p align="center">
@@ -17,9 +17,9 @@
 
 ## 🏁 About
 
-**F1 Atlas** is a single-page application for exploring the world of Formula 1 — past and present. Pick any season from the dropdown and browse the full race calendar, dive into individual race results and qualifying times, check the championship standings, or view detailed driver profiles with season stats.
+**F1 Atlas** is a single-page application for exploring the world of Formula 1, past and present. Pick any season from the dropdown and browse the full race calendar, dive into individual race results and qualifying times, check the championship standings, or view detailed driver profiles with season stats.
 
-Built with React 19, styled with Tailwind CSS v4, and powered by the [Jolpica F1 API](https://github.com/jolpica/jolpica-f1) (the successor to Ergast). No authentication, no API keys, no backend — just clean client-side data fetching.
+Built with React 19, styled with Tailwind CSS v4, and powered by the [Jolpica F1 API](https://github.com/jolpica/jolpica-f1) (the successor to Ergast). No authentication, no API keys, no backend. Just clean client-side data fetching.
 
 ## ✨ Features
 
@@ -36,11 +36,11 @@ Built with React 19, styled with Tailwind CSS v4, and powered by the [Jolpica F1
 
 ## 🛠 Tech Stack
 
-- **React 19** — components, hooks, context
-- **React Router 7** — declarative client-side routing
-- **Tailwind CSS 4** — utility-first styling with `@theme` configuration
-- **Vite 6** — dev server and build tool
-- **Jolpica F1 API** — open Formula 1 data (no auth required)
+- **React 19** for components, hooks, and context
+- **React Router 7** for declarative client-side routing
+- **Tailwind CSS 4** for utility-first styling with `@theme` configuration
+- **Vite 6** as the dev server and build tool
+- **Jolpica F1 API** for open Formula 1 data (no auth required)
 
 ## 🚀 Getting Started
 
@@ -55,16 +55,16 @@ Open `http://localhost:5173` to see the app.
 
 ## 📋 Roadmap
 
-> Features on the horizon — things to build next.
+> Features on the horizon.
 
-- **Head-to-head comparison** — select two drivers, compare their results side by side across a season
-- **Favourites system** — bookmark drivers and races, persisted with localStorage
-- **Circuit history page** — tap a circuit to see every winner in its history
-- **Dark / light theme toggle** — switch between themes
-- **Search** — find any driver by name across all seasons
-- **Pit stop strategy** — visualise pit stop timing and strategy per race
-- **Sprint race results** — display sprint results when available
-- **Page transitions & animations** — smooth entrance animations and route transitions
+- **Head-to-head comparison**: select two drivers, compare their results side by side across a season
+- **Favourites system**: bookmark drivers and races, persisted with localStorage
+- **Circuit history page**: tap a circuit to see every winner in its history
+- **Dark / light theme toggle**: switch between themes
+- **Search**: find any driver by name across all seasons
+- **Pit stop strategy**: visualise pit stop timing and strategy per race
+- **Sprint race results**: display sprint results when available
+- **Page transitions & animations**: smooth entrance animations and route transitions
 
 ## 📄 License
 
