@@ -1,9 +1,11 @@
 import { Routes, Route } from "react-router";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div>
-      <header>F1 Atlas</header>
+      <Header />
 
       <main>
         <Routes>
@@ -14,7 +16,7 @@ function App() {
         </Routes>
       </main>
 
-      <footer>F1 Atlas © 2026</footer>
+      <Footer />
     </div>
   );
 }
