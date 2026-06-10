@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import RaceDetail from "./pages/RaceDetail";
+import Standings from "./pages/Standings";
 
 function App() {
   return (
@@ -11,8 +13,12 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/race/:season/:round" element={<h2>Race Detail coming in Phase 2</h2>} />
-          <Route path="/standings" element={<h2>Standings coming in Phase 2</h2>} />
+          <Route path="/race/:season/:round" element={<RaceDetail />} />
+          <Route path="/standings" element={<Standings />} />
+          <Route
+            path="/driver/:season/:driverId"
+            element={<p className="p-8">Driver Detail coming in Phase 3</p>}
+          />
           <Route path="*" element={<h2>404 — Page not found</h2>} />
         </Routes>
       </main>
