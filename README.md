@@ -1,77 +1,77 @@
 <p align="center">
-  <img src="./docs/banner.svg" alt="F1 Atlas" width="100%"/>
+  <img src="./docs/f1-atlas-banner.webp" alt="F1 Atlas" width="100%"/>
+</p>
+
+<h1 align="center">F1 Atlas</h1>
+<h3 align="center">Every season. Every race. Every driver.</h3>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/since-1950-e10600?style=for-the-badge&labelColor=15151e" />
+  <img src="https://img.shields.io/badge/75+-seasons-white?style=for-the-badge&labelColor=15151e" />
+  <img src="https://img.shields.io/badge/open-data-e10600?style=for-the-badge&labelColor=15151e" />
 </p>
 
 <p align="center">
-  <strong>Browse every Formula 1 season: race calendars, results, qualifying, standings, and driver profiles.</strong>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" alt="React 19"/>
-  <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4"/>
-  <img src="https://img.shields.io/badge/React_Router-7-CA4245?style=flat-square&logo=reactrouter&logoColor=white" alt="React Router 7"/>
-  <img src="https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite 6"/>
+  <a href="https://bytiagodev.github.io/f1-atlas"><strong>[ View Live ]</strong></a>
 </p>
 
 ---
 
-## 🏁 About
+## The Atlas
 
-**F1 Atlas** is a single-page application for exploring the world of Formula 1, past and present. Pick any season from the dropdown and browse the full race calendar, dive into individual race results and qualifying times, check the championship standings, or view detailed driver profiles with season stats.
+Formula 1 has been racing since 1950. That is over seven decades of grand prix weekends, world champions, legendary circuits, and teams that came and went. F1 Atlas puts all of it in one place.
 
-Built with React 19, styled with Tailwind CSS v4, and powered by the [Jolpica F1 API](https://github.com/jolpica/jolpica-f1) (the successor to Ergast). No authentication, no API keys, no backend. Just clean client-side data fetching.
+This is not a live race tracker. It is not a fan wiki. It is an atlas. You open it, you pick a year, and you start exploring. The data does the talking.
 
-## ✨ Features
+---
 
-| Feature | Status |
-|:---|:---:|
-| Current season race calendar | ✅ |
-| Race results & finishing order | 🔧 In progress |
-| Qualifying times (Q1/Q2/Q3) | 🔧 In progress |
-| Driver & constructor standings | 🔧 In progress |
-| Driver profiles & season stats | 🔜 Planned |
-| Season selector (browse any year) | 🔜 Planned |
-| Responsive, mobile-first design | 🔜 Planned |
-| Deployed on GitHub Pages | 🔜 Planned |
+## What You Will Find
 
-## 🛠 Tech Stack
+You land on the current season. The full race calendar is laid out in front of you: every round, every circuit, every date. Races that have already happened are marked. Races still to come sit waiting.
 
-- **React 19** for components, hooks, and context
-- **React Router 7** for declarative client-side routing
-- **Tailwind CSS 4** for utility-first styling with `@theme` configuration
-- **Vite 6** as the dev server and build tool
-- **Jolpica F1 API** for open Formula 1 data (no auth required)
+Tap into a race and you get the complete picture. The finishing order, the qualifying breakdown with Q1, Q2, and Q3 times, grid positions, time gaps, points scored. Everything that happened that weekend, in one place.
 
-## 🚀 Getting Started
+Switch to the standings and the championship unfolds. Drivers and constructors ranked by points, wins tallied, the title fight told in numbers. Tap any driver's name and you are looking at their full season: every race they entered, where they qualified, where they finished, how many points they scored.
 
-```bash
-git clone https://github.com/bytiagodev/f1-atlas.git
-cd f1-atlas
-npm install
-npm run dev
-```
+Then there is the season selector. Change the year and the entire app updates. 2024. 2012. 1988. 1950. Same interface, different era. Over seven decades of racing, all navigable from a single dropdown.
 
-Open `http://localhost:5173` to see the app.
+---
 
-## 📋 Roadmap
+## Under the Hood
 
-> Features on the horizon.
+| What | How |
+|------|-----|
+| **The chassis** | React 19 + Vite 6 |
+| **The livery** | Tailwind CSS v4 with a custom editorial palette |
+| **The grid** | React Router 7, declarative mode |
+| **The telemetry** | [Jolpica F1 API](https://github.com/jolpica/jolpica-f1), the community successor to Ergast |
+| **The garage** | GitHub Pages |
 
-- **Head-to-head comparison**: select two drivers, compare their results side by side across a season
-- **Favourites system**: bookmark drivers and races, persisted with localStorage
-- **Circuit history page**: tap a circuit to see every winner in its history
-- **Dark / light theme toggle**: switch between themes
-- **Search**: find any driver by name across all seasons
-- **Pit stop strategy**: visualise pit stop timing and strategy per race
-- **Sprint race results**: display sprint results when available
-- **Page transitions & animations**: smooth entrance animations and route transitions
+No backend. No authentication. No API keys. Everything runs client-side.
 
-## 📄 License
+---
 
-MIT
+## On the Radar
+
+A few ideas that belong in this app but have not been built yet.
+
+**Head-to-head.** Pick two drivers, compare their results side by side across a full season. See who had the edge and where.
+
+**Favourites.** Bookmark the drivers and races you care about. Persisted across sessions so they are there when you come back.
+
+**Circuit history.** Tap a circuit and see every winner who has ever raced there. Decades of history at one track.
+
+**Pit stop strategy.** Visualise tyre choices and pit stop timing for any race. See the strategy unfold.
+
+**Sprint results.** Some weekends have sprint races. Show them when the data is there.
+
+**Search.** Find any driver by name, across every season in the database.
 
 ---
 
 <p align="center">
-  <sub>Data provided by the <a href="https://github.com/jolpica/jolpica-f1">Jolpica F1 API</a></sub>
+  <sub>All race data is provided by the <a href="https://github.com/jolpica/jolpica-f1">Jolpica F1 API</a>, the community-maintained successor to the Ergast API.</sub>
+</p>
+<p align="center">
+  <sub>F1 Atlas is an independent, non-commercial project built out of love for the sport and its history. It is not affiliated with or endorsed by Formula 1, the FIA, or any team, driver, or rights holder. Formula 1 and F1 are trademarks of Formula One Licensing BV.</sub>
 </p>
