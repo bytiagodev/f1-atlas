@@ -53,6 +53,58 @@ export default function Standings() {
     Constructors
   </span>
 </div>
+{activeTab === "drivers" && (
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="text-left text-gray-400 border-b border-gray-700">
+              <th className="pb-2 pr-4">Pos</th>
+              <th className="pb-2 pr-4">Driver</th>
+              <th className="pb-2 pr-4">Nationality</th>
+              <th className="pb-2 pr-4">Constructor</th>
+              <th className="pb-2 pr-4">Wins</th>
+              <th className="pb-2">Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            {driverStandings.map((standing) => (
+              <tr key={standing.position} className="border-b border-gray-800">
+                <td className="py-2 pr-4">{standing.position}</td>
+                <td className="py-2 pr-4">
+                  {standing.Driver.givenName} {standing.Driver.familyName}
+                </td>
+                <td className="py-2 pr-4">{standing.Driver.nationality}</td>
+                <td className="py-2 pr-4">{standing.Constructors[0].name}</td>
+                <td className="py-2 pr-4">{standing.wins}</td>
+                <td className="py-2">{standing.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      {activeTab === "constructors" && (
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="text-left text-gray-400 border-b border-gray-700">
+              <th className="pb-2 pr-4">Pos</th>
+              <th className="pb-2 pr-4">Constructor</th>
+              <th className="pb-2 pr-4">Nationality</th>
+              <th className="pb-2 pr-4">Wins</th>
+              <th className="pb-2">Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            {constructorStandings.map((standing) => (
+              <tr key={standing.position} className="border-b border-gray-800">
+                <td className="py-2 pr-4">{standing.position}</td>
+                <td className="py-2 pr-4">{standing.Constructor.name}</td>
+                <td className="py-2 pr-4">{standing.Constructor.nationality}</td>
+                <td className="py-2 pr-4">{standing.wins}</td>
+                <td className="py-2">{standing.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </main>
   );
 }
