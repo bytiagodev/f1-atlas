@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
+import { formatDate } from "../utils/formatters";
 
 function formatStatus(result, winnerLaps) {
   if (result.status === "Lapped") {
@@ -28,6 +29,7 @@ export default function RaceDetail() {
     loading: qualifyingLoading,
     error: qualifyingError,
   } = useFetch(qualifyingEndpoint);
+  const { data: raceData } = useFetch(`${season}/${round}.json`);
 
   if (resultsLoading || qualifyingLoading) return <Loader />;
   if (resultsError) return <ErrorMessage message={resultsError} />;
@@ -39,7 +41,13 @@ export default function RaceDetail() {
   const qualifying =
     qualifyingData?.RaceTable?.Races?.[0]?.QualifyingResults ?? [];
 
-  if (!race) return <ErrorMessage message="Race data not found." />;
+if (!race) {
+  const raceDate = raceData?.RaceTable?.Races?.[0]?.date;
+  if (raceDate && new Date(raceDate) > new Date()) {
+    return <ErrorMessage message="This race hasn't happened yet." isError={false} />;
+  }
+  return <ErrorMessage message="Race data not found." />;
+}
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
@@ -47,7 +55,7 @@ export default function RaceDetail() {
         <p className="text-sm text-gray-400 mb-1">Round {race.round}</p>
         <h1 className="text-3xl font-bold mb-1">{race.raceName}</h1>
         <p className="text-gray-400">
-          {race.Circuit.circuitName} &middot; {race.date}
+          {race.Circuit.circuitName} &middot; {formatDate(race.date)}
         </p>
       </div>
       <section className="mb-12">
@@ -60,7 +68,7 @@ export default function RaceDetail() {
                 <th className="pb-2 pr-4">Driver</th>
                 <th className="pb-2 pr-4">Constructor</th>
                 <th className="pb-2 pr-4">Time</th>
-                <th className="pb-2">Pts</th>
+                <th className="pb-2 text-right">Pts</th>
               </tr>
             </thead>
             <tbody>

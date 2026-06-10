@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { formatDate } from "../utils/formatters";
 
 export default function RaceCard({ race }) {
   const isCompleted = new Date(race.date) < new Date();
@@ -22,7 +23,7 @@ export default function RaceCard({ race }) {
               ? "bg-white/10 text-white/40"
               : "bg-f1-red/20 text-f1-red"
           }`}>
-            {isCompleted ? "Completed" : race.date}
+            {isCompleted ? "Completed" : formatDate(race.date)}
           </span>
         </div>
       </div>
