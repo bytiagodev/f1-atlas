@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import SeasonSelector from "./SeasonSelector.jsx";
 
 export default function Header() {
   return (
@@ -7,7 +8,7 @@ export default function Header() {
         <Link to="/" className="text-white font-bold tracking-wide">
           F1 Atlas
         </Link>
-        <nav className="flex gap-6">
+        <nav className="flex items-center gap-6">
           <Link
             to="/"
             className="text-white/70 hover:text-white text-sm transition-colors"
@@ -20,6 +21,7 @@ export default function Header() {
           >
             Standings
           </Link>
+          <SeasonSelector />
         </nav>
       </div>
     </header>
