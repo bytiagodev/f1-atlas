@@ -77,6 +77,7 @@ export default function Standings() {
                 extra={standing.Constructors[0].name}
                 wins={standing.wins}
                 points={standing.points}
+                link={`/driver/current/${standing.Driver.driverId}`}
               />
             ))}
           </tbody>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
@@ -41,13 +41,18 @@ export default function RaceDetail() {
   const qualifying =
     qualifyingData?.RaceTable?.Races?.[0]?.QualifyingResults ?? [];
 
-if (!race) {
-  const raceDate = raceData?.RaceTable?.Races?.[0]?.date;
-  if (raceDate && new Date(raceDate) > new Date()) {
-    return <ErrorMessage message="This race hasn't happened yet." isError={false} />;
+  if (!race) {
+    const raceDate = raceData?.RaceTable?.Races?.[0]?.date;
+    if (raceDate && new Date(raceDate) > new Date()) {
+      return (
+        <ErrorMessage
+          message="This race hasn't happened yet."
+          isError={false}
+        />
+      );
+    }
+    return <ErrorMessage message="Race data not found." />;
   }
-  return <ErrorMessage message="Race data not found." />;
-}
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
@@ -76,12 +81,19 @@ if (!race) {
                 <tr key={result.position} className="border-b border-gray-800">
                   <td className="py-2 pr-4">{result.position}</td>
                   <td className="py-2 pr-4">
-                    {result.Driver.givenName} {result.Driver.familyName}
+                    <Link
+                      to={`/driver/${season}/${result.Driver.driverId}`}
+                      className="hover:text-white underline"
+                    >
+                      {result.Driver.givenName} {result.Driver.familyName}
+                    </Link>
                   </td>
                   <td className="py-2 pr-4">{result.Constructor.name}</td>
                   <td className="py-2 pr-4">{formatStatus(result)}</td>
                   <td className="py-2">{result.points}</td>
-                  <td className="py-2 pr-4">{formatStatus(result, winnerLaps)}</td>
+                  <td className="py-2 pr-4">
+                    {formatStatus(result, winnerLaps)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -106,7 +118,12 @@ if (!race) {
                 <tr key={result.position} className="border-b border-gray-800">
                   <td className="py-2 pr-4">{result.position}</td>
                   <td className="py-2 pr-4">
-                    {result.Driver.givenName} {result.Driver.familyName}
+                    <Link
+                      to={`/driver/${season}/${result.Driver.driverId}`}
+                      className="hover:text-white underline"
+                    >
+                      {result.Driver.givenName} {result.Driver.familyName}
+                    </Link>
                   </td>
                   <td className="py-2 pr-4">{result.Q1 ?? "-"}</td>
                   <td className="py-2 pr-4">{result.Q2 ?? "-"}</td>
