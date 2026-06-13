@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 import { formatDate } from "../utils/formatters";
 
-export default function RaceCard({ race }) {
+export default function RaceCard({ race, season }) {
   const isCompleted = new Date(race.date) < new Date();
 
   return (
-    <Link to={`/race/current/${race.round}`}>
+    <Link to={`/race/${season}/${race.round}`}>
       <div className={`p-4 border rounded-lg transition-colors ${
         isCompleted
           ? "border-white/10 hover:border-white/30"

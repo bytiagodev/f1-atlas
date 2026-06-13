@@ -1,22 +1,24 @@
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import useSeason from "../hooks/useSeason.js";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import StandingsRow from "../components/StandingsRow";
 
 export default function Standings() {
   const [activeTab, setActiveTab] = useState("drivers");
+  const { season } = useSeason();
 
   const {
     data: driversData,
     loading: driversLoading,
     error: driversError,
-  } = useFetch("current/driverstandings.json");
+  } = useFetch(`${season}/driverstandings.json`);
   const {
     data: constructorsData,
     loading: constructorsLoading,
     error: constructorsError,
-  } = useFetch("current/constructorstandings.json");
+  } = useFetch(`${season}/constructorstandings.json`);
 
   if (driversLoading || constructorsLoading) return <Loader />;
   if (driversError) return <ErrorMessage message={driversError} />;
@@ -77,7 +79,7 @@ export default function Standings() {
                 extra={standing.Constructors[0].name}
                 wins={standing.wins}
                 points={standing.points}
-                link={`/driver/current/${standing.Driver.driverId}`}
+                link={`/driver/${season}/${standing.Driver.driverId}`}
               />
             ))}
           </tbody>
