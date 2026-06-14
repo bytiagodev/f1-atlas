@@ -15,9 +15,9 @@ const CARD_BASE =
   "flex flex-col bg-[#12121a] border border-white/10 rounded-lg p-5 min-h-[250px] hover:border-white/25 transition-colors";
 
 function formatDateRange(dateStr) {
-  const start = new Date(dateStr);
-  const end = new Date(start);
-  end.setDate(end.getDate() + 2);
+  const end = new Date(dateStr);
+  const start = new Date(end);
+  start.setDate(start.getDate() - 2);
   const startDay = start.getDate().toString().padStart(2, "0");
   const endDay = end.getDate().toString().padStart(2, "0");
   const startMonth = start
