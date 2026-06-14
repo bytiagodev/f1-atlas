@@ -27,13 +27,29 @@ This is not a live race tracker. It is not a fan wiki. It is an atlas. You open 
 
 ## What You Will Find
 
-You land on the current season. The full race calendar is laid out in front of you: every round, every circuit, every date. Races that have already happened are marked. Races still to come sit waiting.
+You land on the current season. The full race calendar is laid out in front of you: every round, every circuit, every date. Completed races show the podium finishers right on the card, with driver photos and finishing times, so you can see who won without tapping in. Upcoming races carry circuit outline SVGs and country flags to give each card a sense of place.
 
-Tap into a race and you get the complete picture. The finishing order, the qualifying breakdown with Q1, Q2, and Q3 times, grid positions, time gaps, points scored. Everything that happened that weekend, in one place.
+Tap into a race and you get the complete picture. The finishing order, the qualifying breakdown with Q1, Q2, and Q3 times, grid positions, time gaps, points scored. FIA-standard status codes (DNF, DNS, DSQ, lapped positions) are all handled correctly. Everything that happened that weekend, in one place.
 
-Switch to the standings and the championship unfolds. Drivers and constructors ranked by points, wins tallied, the title fight told in numbers. Tap any driver's name and you are looking at their full season: every race they entered, where they qualified, where they finished, how many points they scored.
+Switch to the standings and the championship unfolds. Drivers and constructors ranked by points, wins tallied, the title fight told in numbers. Tap any driver's name and you are looking at their full season: every race they entered, where they qualified, where they finished, how many points they scored. Driver photos are pulled from Wikipedia for the detail page, with no placeholder when one is unavailable.
 
 Then there is the season selector. Change the year and the entire app updates. 2024. 2012. 1988. 1950. Same interface, different era. Over seven decades of racing, all navigable from a single dropdown.
+
+---
+
+## Design Direction
+
+The visual language is deliberate. F1 Atlas is designed to feel like a race programme, not a TV broadcast overlay.
+
+The palette is dark and restrained. A deep background (`#15151e`) with slightly lifted surface cards (`#12121a`), secondary text in muted grey (`#8b95a5`), and F1 red (`#e10600`) used only where it earns attention: the wordmark accent, active states, error messages. No team-colour gradients. No glassmorphism. No hero images of cars.
+
+Typography is set in [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk), a geometric sans-serif with a technical character that fits the sport. Labels, headers, navigation, and metadata are all uppercase with wide letter-spacing. Content text (driver names, race names) stays in normal case for readability.
+
+The race cards on the home page come in three states. Completed races carry a checkered-flag date pill and a podium bar showing the top three finishers with driver headshots pulled from the F1 Cloudinary CDN. The next race is highlighted with a distinct blue background. Upcoming races show the circuit outline and date. Circuit SVGs are sourced from [julesr0y/f1-circuits-svg](https://github.com/julesr0y/f1-circuits-svg) (CC-BY-4.0) and rendered inline with no additional network requests.
+
+Country flags come from [flagcdn.com](https://flagcdn.com), covering both the current calendar and historical venues back to the 1950s.
+
+Everything is responsive. Tables scroll horizontally on narrow screens. The driver detail layout stacks on mobile. Stats and navigation adapt at each breakpoint.
 
 ---
 
@@ -53,19 +69,9 @@ No backend. No authentication. No API keys. Everything runs client-side.
 
 ## On the Radar
 
-A few ideas that belong in this app but have not been built yet.
+**Sprint results.** Sprint races have been part of the calendar since 2021 and the format is expanding. The data is available through the API but is not yet surfaced in the app. Adding sprint results to the race detail page is the most immediate gap to close.
 
-**Head-to-head.** Pick two drivers, compare their results side by side across a full season. See who had the edge and where.
-
-**Favourites.** Bookmark the drivers and races you care about. Persisted across sessions so they are there when you come back.
-
-**Circuit history.** Tap a circuit and see every winner who has ever raced there. Decades of history at one track.
-
-**Pit stop strategy.** Visualise tyre choices and pit stop timing for any race. See the strategy unfold.
-
-**Sprint results.** Some weekends have sprint races. Show them when the data is there.
-
-**Search.** Find any driver by name, across every season in the database.
+**Circuit history.** Tap a circuit and see every winner who has ever raced there. Decades of results at one track. This is the most "atlas" feature not yet built, and the one most aligned with what the app is about.
 
 ---
 
