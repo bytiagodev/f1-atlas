@@ -31,28 +31,29 @@ export default function Standings() {
       ?.ConstructorStandings ?? [];
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Standings</h1>
+    <main className="max-w-5xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold tracking-wider uppercase mb-8">
+        {season === "current" ? "" : `${season} `}Standings
+      </h1>
 
       <div className="flex gap-6 mb-8">
         <span
           onClick={() => setActiveTab("drivers")}
-          className="pb-3 text-sm font-medium cursor-pointer transition-colors border-b-2"
-          style={{
-            borderColor: activeTab === "drivers" ? "white" : "transparent",
-            color: activeTab === "drivers" ? "white" : "var(--color-gray-400)",
-          }}
+          className={`pb-3 text-xs font-medium tracking-widest uppercase cursor-pointer transition-colors border-b-2 ${
+            activeTab === "drivers"
+              ? "border-white text-white"
+              : "border-transparent text-[#8b95a5] hover:text-white/70"
+          }`}
         >
           Drivers
         </span>
         <span
           onClick={() => setActiveTab("constructors")}
-          className="pb-3 text-sm font-medium cursor-pointer transition-colors border-b-2"
-          style={{
-            borderColor: activeTab === "constructors" ? "white" : "transparent",
-            color:
-              activeTab === "constructors" ? "white" : "var(--color-gray-400)",
-          }}
+          className={`pb-3 text-xs font-medium tracking-widest uppercase cursor-pointer transition-colors border-b-2 ${
+            activeTab === "constructors"
+              ? "border-white text-white"
+              : "border-transparent text-[#8b95a5] hover:text-white/70"
+          }`}
         >
           Constructors
         </span>
@@ -60,13 +61,13 @@ export default function Standings() {
       {activeTab === "drivers" && (
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-left text-gray-400 border-b border-gray-700">
-              <th className="pb-2 pr-4">Pos</th>
-              <th className="pb-2 pr-4">Driver</th>
-              <th className="pb-2 pr-4">Nationality</th>
-              <th className="pb-2 pr-4">Constructor</th>
-              <th className="pb-2 pr-4 text-right">Wins</th>
-              <th className="pb-2 text-right">Pts</th>
+            <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
+              <th className="pb-3 pr-4 font-medium">Position</th>
+              <th className="pb-3 pr-4 font-medium">Driver</th>
+              <th className="pb-3 pr-4 font-medium">Nationality</th>
+              <th className="pb-3 pr-4 font-medium">Constructor</th>
+              <th className="pb-3 pr-4 font-medium text-right">Wins</th>
+              <th className="pb-3 font-medium text-right">Points</th>
             </tr>
           </thead>
           <tbody>
@@ -88,12 +89,12 @@ export default function Standings() {
       {activeTab === "constructors" && (
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-left text-gray-400 border-b border-gray-700">
-              <th className="pb-2 pr-4">Pos</th>
-              <th className="pb-2 pr-4">Constructor</th>
-              <th className="pb-2 pr-4">Nationality</th>
-              <th className="pb-2 pr-4 text-right">Wins</th>
-              <th className="pb-2 text-right">Pts</th>
+            <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
+              <th className="pb-3 pr-4 font-medium">Position</th>
+              <th className="pb-3 pr-4 font-medium">Constructor</th>
+              <th className="pb-3 pr-4 font-medium">Nationality</th>
+              <th className="pb-3 pr-4 font-medium text-right">Wins</th>
+              <th className="pb-3 font-medium text-right">Points</th>
             </tr>
           </thead>
           <tbody>

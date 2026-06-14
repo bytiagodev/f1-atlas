@@ -55,44 +55,69 @@ export default function RaceDetail() {
   }
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <p className="text-sm text-gray-400 mb-1">Round {race.round}</p>
-        <h1 className="text-3xl font-bold mb-1">{race.raceName}</h1>
-        <p className="text-gray-400">
+    <main className="max-w-5xl mx-auto px-4 py-8">
+      <nav className="mb-6">
+        <Link
+          to="/"
+          className="text-xs tracking-widest uppercase text-[#8b95a5] hover:text-white transition-colors"
+        >
+          Calendar
+        </Link>
+        <span className="text-[#8b95a5] mx-2">/</span>
+        <span className="text-xs tracking-widest uppercase text-white">
+          Round {race.round}
+        </span>
+      </nav>
+
+      <div className="mb-10">
+        <h1 className="text-2xl font-bold tracking-wider uppercase mb-1">
+          {race.raceName}
+        </h1>
+        <p className="text-[#8b95a5]">
           {race.Circuit.circuitName} &middot; {formatDate(race.date)}
         </p>
       </div>
+
       <section className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">Race Results</h2>
+        <h2 className="text-xs font-medium tracking-widest uppercase text-[#8b95a5] mb-4">
+          Race Results
+        </h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-left text-gray-400 border-b border-gray-700">
-                <th className="pb-2 pr-4">Pos</th>
-                <th className="pb-2 pr-4">Driver</th>
-                <th className="pb-2 pr-4">Constructor</th>
-                <th className="pb-2 pr-4">Time</th>
-                <th className="pb-2 text-right">Pts</th>
+              <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
+                <th className="pb-3 pr-4 font-medium">Position</th>
+                <th className="pb-3 pr-4 font-medium">Driver</th>
+                <th className="pb-3 pr-4 font-medium">Constructor</th>
+                <th className="pb-3 pr-4 font-medium">Time / Status</th>
+                <th className="pb-3 font-medium text-right">Points</th>
               </tr>
             </thead>
             <tbody>
               {results.map((result) => (
-                <tr key={result.position} className="border-b border-gray-800">
-                  <td className="py-2 pr-4">{result.position}</td>
-                  <td className="py-2 pr-4">
+                <tr
+                  key={result.position}
+                  className="border-b border-white/[0.04]"
+                >
+                  <td className="py-2.5 pr-4 text-white/50">
+                    {result.position}
+                  </td>
+                  <td className="py-2.5 pr-4 font-medium">
                     <Link
                       to={`/driver/${season}/${result.Driver.driverId}`}
-                      className="hover:text-white underline"
+                      className="hover:text-white/70 transition-colors"
                     >
                       {result.Driver.givenName} {result.Driver.familyName}
                     </Link>
                   </td>
-                  <td className="py-2 pr-4">{result.Constructor.name}</td>
-                  <td className="py-2 pr-4">{formatStatus(result)}</td>
-                  <td className="py-2">{result.points}</td>
-                  <td className="py-2 pr-4">
+                  <td className="py-2.5 pr-4 text-white/45">
+                    {result.Constructor.name}
+                  </td>
+                  <td className="py-2.5 pr-4 text-white/50">
                     {formatStatus(result, winnerLaps)}
+                  </td>
+                  <td className="py-2.5 text-right font-medium">
+                    {result.points}
                   </td>
                 </tr>
               ))}
@@ -100,34 +125,48 @@ export default function RaceDetail() {
           </table>
         </div>
       </section>
+
       <section className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">Qualifying</h2>
+        <h2 className="text-xs font-medium tracking-widest uppercase text-[#8b95a5] mb-4">
+          Qualifying
+        </h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-left text-gray-400 border-b border-gray-700">
-                <th className="pb-2 pr-4">Pos</th>
-                <th className="pb-2 pr-4">Driver</th>
-                <th className="pb-2 pr-4">Q1</th>
-                <th className="pb-2 pr-4">Q2</th>
-                <th className="pb-2">Q3</th>
+              <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
+                <th className="pb-3 pr-4 font-medium">Position</th>
+                <th className="pb-3 pr-4 font-medium">Driver</th>
+                <th className="pb-3 pr-4 font-medium">Q1</th>
+                <th className="pb-3 pr-4 font-medium">Q2</th>
+                <th className="pb-3 font-medium">Q3</th>
               </tr>
             </thead>
             <tbody>
               {qualifying.map((result) => (
-                <tr key={result.position} className="border-b border-gray-800">
-                  <td className="py-2 pr-4">{result.position}</td>
-                  <td className="py-2 pr-4">
+                <tr
+                  key={result.position}
+                  className="border-b border-white/[0.04]"
+                >
+                  <td className="py-2.5 pr-4 text-white/50">
+                    {result.position}
+                  </td>
+                  <td className="py-2.5 pr-4 font-medium">
                     <Link
                       to={`/driver/${season}/${result.Driver.driverId}`}
-                      className="hover:text-white underline"
+                      className="hover:text-white/70 transition-colors"
                     >
                       {result.Driver.givenName} {result.Driver.familyName}
                     </Link>
                   </td>
-                  <td className="py-2 pr-4">{result.Q1 ?? "-"}</td>
-                  <td className="py-2 pr-4">{result.Q2 ?? "-"}</td>
-                  <td className="py-2">{result.Q3 ?? "-"}</td>
+                  <td className="py-2.5 pr-4 text-white/50">
+                    {result.Q1 ?? "-"}
+                  </td>
+                  <td className="py-2.5 pr-4 text-white/50">
+                    {result.Q2 ?? "-"}
+                  </td>
+                  <td className="py-2.5 text-white/50">
+                    {result.Q3 ?? "-"}
+                  </td>
                 </tr>
               ))}
             </tbody>

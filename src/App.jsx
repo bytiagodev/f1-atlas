@@ -5,21 +5,25 @@ import Home from "./pages/Home";
 import RaceDetail from "./pages/RaceDetail";
 import Standings from "./pages/Standings";
 import DriverDetail from "./pages/DriverDetail";
+import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main>
+      <div className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/race/:season/:round" element={<RaceDetail />} />
           <Route path="/standings" element={<Standings />} />
           <Route path="/driver/:season/:driverId" element={<DriverDetail />} />
-          <Route path="*" element={<h2>404 — Page not found</h2>} />
+          <Route
+            path="*"
+            element={<ErrorMessage message="Page not found." isError={false} />}
+          />
         </Routes>
-      </main>
+      </div>
 
       <Footer />
     </div>

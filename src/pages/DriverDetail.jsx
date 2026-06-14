@@ -54,92 +54,133 @@ export default function DriverDetail() {
     (sum, r) => sum + Number(r.Results[0].points),
     0,
   );
+  const seasonNum = parseInt(season);
+  const isPre2014 = !isNaN(seasonNum) && seasonNum < 2014;
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <Link
-  to="/standings"
-  className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white mb-6 transition-colors"
->
-  <span className="text-lg leading-none">&larr;</span>
-  <span>Back to Standings</span>
-</Link>
+    <main className="max-w-5xl mx-auto px-4 py-8">
+      <nav className="mb-6">
+        <Link
+          to="/standings"
+          className="text-xs tracking-widest uppercase text-[#8b95a5] hover:text-white transition-colors"
+        >
+          Standings
+        </Link>
+        <span className="text-[#8b95a5] mx-2">/</span>
+        <span className="text-xs tracking-widest uppercase text-white">
+          {driver.givenName} {driver.familyName}
+        </span>
+      </nav>
 
-      <div className="flex gap-6 items-start mb-8">
-        {photo ? (
+      <div className="flex gap-6 items-start mb-10">
+        {photo && (
           <img
             src={photo}
             alt={`${driver.givenName} ${driver.familyName}`}
             className="w-32 h-32 object-cover rounded-lg"
           />
-        ) : (
-          <div className="w-32 h-32 rounded-lg bg-gray-800 flex items-center justify-center text-gray-500 text-sm">
-            No photo
-          </div>
         )}
 
         <div>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-2xl font-bold tracking-wider uppercase">
             {driver.givenName} {driver.familyName}
           </h1>
-          <p className="text-gray-400 mt-1">
-            #{driver.permanentNumber} · {driver.nationality}
+          <p className="text-[#8b95a5] mt-1">
+            {driverId === "michael_schumacher" && isPre2014 ? (
+              <span className="text-f1-red font-bold">#1</span>
+            ) : !isPre2014 && driver.permanentNumber ? (
+              <span>#{driver.permanentNumber}</span>
+            ) : null}
+            {((driverId === "michael_schumacher" && isPre2014) ||
+              (!isPre2014 && driver.permanentNumber)) && (
+              <span className="mx-1">&middot;</span>
+            )}
+            {driver.nationality}
           </p>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-[#8b95a5] text-sm mt-1">
             Born {formatDate(driver.dateOfBirth)}
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-4 mb-8">
-        <div className="bg-gray-800 rounded-lg p-4 text-center">
-          <p className="text-2xl font-bold">{totalPoints}</p>
-          <p className="text-gray-400 text-sm mt-1">Points</p>
+      <div className="border-t border-white/[0.08] pt-6">
+        <h2 className="text-sm font-bold tracking-widest uppercase text-white mb-6">
+          {season === "current" ? "" : `${season} `}Season Results
+        </h2>
+
+        <div className="flex items-baseline gap-8 mb-8">
+          <div>
+            <p className="text-2xl font-bold">{totalPoints}</p>
+            <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
+              Points
+            </p>
+          </div>
+          <div className="w-px h-8 bg-white/[0.08] self-center" />
+          <div>
+            <p className="text-2xl font-bold">{wins}</p>
+            <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
+              Wins
+            </p>
+          </div>
+          <div className="w-px h-8 bg-white/[0.08] self-center" />
+          <div>
+            <p className="text-2xl font-bold">{podiums}</p>
+            <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
+              Podiums
+            </p>
+          </div>
+          <div className="w-px h-8 bg-white/[0.08] self-center" />
+          <div>
+            <p className="text-2xl font-bold">P{bestFinish}</p>
+            <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
+              Best Result
+            </p>
+          </div>
         </div>
-        <div className="bg-gray-800 rounded-lg p-4 text-center">
-          <p className="text-2xl font-bold">{wins}</p>
-          <p className="text-gray-400 text-sm mt-1">Wins</p>
-        </div>
-        <div className="bg-gray-800 rounded-lg p-4 text-center">
-          <p className="text-2xl font-bold">{podiums}</p>
-          <p className="text-gray-400 text-sm mt-1">Podiums</p>
-        </div>
-        <div className="bg-gray-800 rounded-lg p-4 text-center">
-          <p className="text-2xl font-bold">{bestFinish}</p>
-          <p className="text-gray-400 text-sm mt-1">Best Finish</p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
+                <th className="pb-3 pr-4 font-medium">Round</th>
+                <th className="pb-3 pr-4 font-medium">Race</th>
+                <th className="pb-3 pr-4 font-medium text-right">Grid</th>
+                <th className="pb-3 pr-4 font-medium text-right">Finish</th>
+                <th className="pb-3 pr-4 font-medium text-right">Points</th>
+                <th className="pb-3 font-medium text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {races.map((race) => {
+                const result = race.Results[0];
+                return (
+                  <tr key={race.round} className="border-b border-white/[0.04]">
+                    <td className="py-2.5 pr-4 text-white/50">{race.round}</td>
+                    <td className="py-2.5 pr-4 font-medium">
+                      <Link
+                        to={`/race/${season}/${race.round}`}
+                        className="hover:text-white/70 transition-colors"
+                      >
+                        {race.raceName}
+                      </Link>
+                    </td>
+                    <td className="py-2.5 pr-4 text-right text-white/50">
+                      {result.grid}
+                    </td>
+                    <td className="py-2.5 pr-4 text-right text-white/50">
+                      {result.position}
+                    </td>
+                    <td className="py-2.5 pr-4 text-right text-white/50">
+                      {result.points}
+                    </td>
+                    <td className="py-2.5 text-right text-white/50">
+                      {result.status}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
-      <h2 className="text-xl font-bold mb-4">{season === "current" ? "Current" : season} Season Results</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-gray-400 border-b border-gray-700">
-              <th className="text-left py-2 pr-4">Round</th>
-              <th className="text-left py-2 pr-4">Race</th>
-              <th className="text-right py-2 pr-4">Grid</th>
-              <th className="text-right py-2 pr-4">Finish</th>
-              <th className="text-right py-2 pr-4">Points</th>
-              <th className="text-right py-2">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {races.map((race) => {
-              const result = race.Results[0];
-              return (
-                <tr
-                  key={race.round}
-                  className="border-b border-gray-800 hover:bg-gray-800"
-                >
-                  <td className="py-2 pr-4">{race.round}</td>
-                  <td className="py-2 pr-4">{race.raceName}</td>
-                  <td className="text-right py-2 pr-4">{result.grid}</td>
-                  <td className="text-right py-2 pr-4">{result.position}</td>
-                  <td className="text-right py-2 pr-4">{result.points}</td>
-                  <td className="text-right py-2">{result.status}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </main>
   );
 }

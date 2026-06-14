@@ -10,21 +10,21 @@ export default function StandingsRow({
   link,
 }) {
   return (
-    <tr className="border-b border-gray-800">
-      <td className="py-2 pr-4">{position}</td>
-      <td className="py-2 pr-4">
+    <tr className="border-b border-white/[0.04]">
+      <td className="py-2.5 pr-4 text-white/50">{position}</td>
+      <td className="py-2.5 pr-4 font-medium">
         {link ? (
-          <Link to={link} className="hover:text-white underline">
+          <Link to={link} className="hover:text-white/70 transition-colors">
             {name}
           </Link>
         ) : (
           name
         )}
       </td>
-      <td className="py-2 pr-4">{nationality}</td>
-      {extra !== null && <td className="py-2 pr-4">{extra}</td>}
-      <td className="py-2 pr-4 text-right">{wins}</td>
-      <td className="py-2 text-right">{points}</td>
+      <td className="py-2.5 pr-4 text-white/45">{nationality}</td>
+      {extra !== null && <td className="py-2.5 pr-4 text-white/45">{extra}</td>}
+      <td className="py-2.5 pr-4 text-right text-white/50">{wins}</td>
+      <td className="py-2.5 text-right font-medium">{points}</td>
     </tr>
   );
 }
