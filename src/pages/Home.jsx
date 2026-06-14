@@ -94,6 +94,7 @@ export default function Home() {
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage message={error} />;
+  if (races.length === 0) return <ErrorMessage message="No races found for this season." isError={false} />;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">

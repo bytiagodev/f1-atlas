@@ -12,6 +12,7 @@
     background-color: var(--color-f1-dark);
     color: white;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 }
 

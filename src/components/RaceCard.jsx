@@ -15,13 +15,21 @@ const CARD_BASE =
   "flex flex-col bg-[#12121a] border border-white/10 rounded-lg p-5 min-h-[250px] hover:border-white/25 transition-colors";
 
 function formatDateRange(dateStr) {
-  const date = new Date(dateStr);
-  const day = date.getDate().toString().padStart(2, "0");
-  const endDay = (date.getDate() + 2).toString().padStart(2, "0");
-  const month = date
+  const start = new Date(dateStr);
+  const end = new Date(start);
+  end.setDate(end.getDate() + 2);
+  const startDay = start.getDate().toString().padStart(2, "0");
+  const endDay = end.getDate().toString().padStart(2, "0");
+  const startMonth = start
     .toLocaleDateString("en-GB", { month: "short" })
     .toUpperCase();
-  return `${day} - ${endDay} ${month}`;
+  const endMonth = end
+    .toLocaleDateString("en-GB", { month: "short" })
+    .toUpperCase();
+  if (startMonth === endMonth) {
+    return `${startDay} - ${endDay} ${startMonth}`;
+  }
+  return `${startDay} ${startMonth} - ${endDay} ${endMonth}`;
 }
 
 export default function RaceCard({ race, variant, podium }) {

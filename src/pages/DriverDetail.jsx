@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
-import { fetchF1 } from "../utils/api.js";
-import Loader from "../components/Loader.jsx";
-import ErrorMessage from "../components/ErrorMessage.jsx";
-import { formatDate } from "../utils/formatters.js";
+import { fetchF1 } from "../utils/api";
+import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+import { formatDate } from "../utils/formatters";
 
 export default function DriverDetail() {
   const { season, driverId } = useParams();
@@ -20,6 +20,12 @@ export default function DriverDetail() {
           `${season}/drivers/${driverId}/results.json`,
         );
         const raceList = data.RaceTable.Races;
+
+        if (!raceList || raceList.length === 0) {
+          setError("No results found for this driver.");
+          return;
+        }
+
         const driverInfo = raceList[0].Results[0].Driver;
 
         setDriver(driverInfo);
@@ -40,6 +46,7 @@ export default function DriverDetail() {
 
     loadDriver();
   }, [season, driverId]);
+
   if (loading) return <Loader />;
   if (error) return <ErrorMessage message={error} />;
 
@@ -71,7 +78,7 @@ export default function DriverDetail() {
         </span>
       </nav>
 
-      <div className="flex gap-6 items-start mb-10">
+      <div className="flex flex-col sm:flex-row gap-6 items-start mb-10">
         {photo && (
           <img
             src={photo}
@@ -106,28 +113,28 @@ export default function DriverDetail() {
           {season === "current" ? "" : `${season} `}Season Results
         </h2>
 
-        <div className="flex items-baseline gap-8 mb-8">
+        <div className="flex flex-wrap items-baseline gap-6 sm:gap-8 mb-8">
           <div>
             <p className="text-2xl font-bold">{totalPoints}</p>
             <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
               Points
             </p>
           </div>
-          <div className="w-px h-8 bg-white/[0.08] self-center" />
+          <div className="hidden sm:block w-px h-8 bg-white/[0.08] self-center" />
           <div>
             <p className="text-2xl font-bold">{wins}</p>
             <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
               Wins
             </p>
           </div>
-          <div className="w-px h-8 bg-white/[0.08] self-center" />
+          <div className="hidden sm:block w-px h-8 bg-white/[0.08] self-center" />
           <div>
             <p className="text-2xl font-bold">{podiums}</p>
             <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">
               Podiums
             </p>
           </div>
-          <div className="w-px h-8 bg-white/[0.08] self-center" />
+          <div className="hidden sm:block w-px h-8 bg-white/[0.08] self-center" />
           <div>
             <p className="text-2xl font-bold">P{bestFinish}</p>
             <p className="text-[#8b95a5] text-[11px] tracking-widest uppercase mt-0.5">

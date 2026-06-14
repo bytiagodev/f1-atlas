@@ -1,4 +1,5 @@
 const countryToISO = {
+  "Argentina": "ar",
   "Australia": "au",
   "Austria": "at",
   "Azerbaijan": "az",
@@ -7,15 +8,23 @@ const countryToISO = {
   "Brazil": "br",
   "Canada": "ca",
   "China": "cn",
+  "Colombia": "co",
   "France": "fr",
   "Germany": "de",
   "Hungary": "hu",
   "India": "in",
+  "Indonesia": "id",
   "Italy": "it",
   "Japan": "jp",
+  "Korea": "kr",
+  "Malaysia": "my",
   "Mexico": "mx",
   "Monaco": "mc",
+  "Morocco": "ma",
   "Netherlands": "nl",
+  "New Zealand": "nz",
+  "Peru": "pe",
+  "Philippines": "ph",
   "Portugal": "pt",
   "Qatar": "qa",
   "Russia": "ru",
@@ -33,7 +42,7 @@ const countryToISO = {
   "USA": "us",
 };
 
-export function getCountryISO(country) {
+function getCountryISO(country) {
   return countryToISO[country] || null;
 }
 

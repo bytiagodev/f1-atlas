@@ -33,7 +33,6 @@ export default function RaceDetail() {
 
   if (resultsLoading || qualifyingLoading) return <Loader />;
   if (resultsError) return <ErrorMessage message={resultsError} />;
-  if (qualifyingError) return <ErrorMessage message={qualifyingError} />;
 
   const race = resultsData?.RaceTable?.Races?.[0];
   const results = race?.Results ?? [];
@@ -130,6 +129,9 @@ export default function RaceDetail() {
         <h2 className="text-xs font-medium tracking-widest uppercase text-[#8b95a5] mb-4">
           Qualifying
         </h2>
+        {qualifying.length === 0 ? (
+          <ErrorMessage message="No qualifying data available for this race." isError={false} />
+        ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -172,6 +174,7 @@ export default function RaceDetail() {
             </tbody>
           </table>
         </div>
+        )}
       </section>
     </main>
   );

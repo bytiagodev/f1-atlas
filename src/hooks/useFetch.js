@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchF1 } from "../utils/api.js";
+import { fetchF1 } from "../utils/api";
 
 export default function useFetch(endpoint) {
   const [data, setData] = useState(null);

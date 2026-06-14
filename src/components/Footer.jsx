@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/[0.08] mt-12">
       <div className="max-w-5xl mx-auto px-4 py-6">
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
           <div>
             <div className="flex flex-col gap-1 mb-2">
               <span className="text-white text-xs font-medium tracking-[0.25em]">

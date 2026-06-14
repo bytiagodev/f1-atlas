@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { fetchF1 } from "../utils/api.js";
-import useSeason from "../hooks/useSeason.js";
+import { fetchF1 } from "../utils/api";
+import useSeason from "../hooks/useSeason";
 
 export default function SeasonSelector() {
   const [seasons, setSeasons] = useState([]);

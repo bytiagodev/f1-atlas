@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
-import useSeason from "../hooks/useSeason.js";
+import useSeason from "../hooks/useSeason";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import StandingsRow from "../components/StandingsRow";
@@ -59,6 +59,10 @@ export default function Standings() {
         </span>
       </div>
       {activeTab === "drivers" && (
+        driverStandings.length === 0 ? (
+          <ErrorMessage message="No driver standings available for this season." isError={false} />
+        ) : (
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
@@ -77,7 +81,7 @@ export default function Standings() {
                 position={standing.position}
                 name={`${standing.Driver.givenName} ${standing.Driver.familyName}`}
                 nationality={standing.Driver.nationality}
-                extra={standing.Constructors[0].name}
+                extra={standing.Constructors?.[0]?.name ?? "-"}
                 wins={standing.wins}
                 points={standing.points}
                 link={`/driver/${season}/${standing.Driver.driverId}`}
@@ -85,8 +89,14 @@ export default function Standings() {
             ))}
           </tbody>
         </table>
+        </div>
+        )
       )}
       {activeTab === "constructors" && (
+        constructorStandings.length === 0 ? (
+          <ErrorMessage message="No constructor standings available for this season." isError={false} />
+        ) : (
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
@@ -111,6 +121,8 @@ export default function Standings() {
             ))}
           </tbody>
         </table>
+        </div>
+        )
       )}
     </main>
   );

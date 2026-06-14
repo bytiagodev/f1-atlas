@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router";
-import SeasonSelector from "./SeasonSelector.jsx";
+import SeasonSelector from "./SeasonSelector";
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -14,7 +14,7 @@ export default function Header() {
           <span className="w-5 h-0.5 bg-f1-red" />
         </Link>
 
-        <nav className="flex items-center gap-7">
+        <nav className="flex items-center gap-4 sm:gap-7">
           <Link
             to="/"
             className={`text-[11px] tracking-[0.15em] uppercase pb-1 transition-colors ${
