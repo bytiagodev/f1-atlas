@@ -86,7 +86,7 @@ export default function Home() {
     const race = results.find((r) => r.round === round);
     if (!race || !race.Results) return null;
     return race.Results.slice(0, 3).map((r) => ({
-      code: r.Driver.code,
+      code: r.Driver.code || r.Driver.familyName.slice(0, 3).toUpperCase(),
       Constructor: r.Constructor,
       time: r.Time?.time || null,
     }));
