@@ -27,9 +27,9 @@ This is not a live race tracker. It is not a fan wiki. It is an atlas. You open 
 
 ## What You Will Find
 
-You land on the current season. The full race calendar is laid out in front of you: every round, every circuit, every date. Completed races show the podium finishers right on the card, with driver photos and finishing times, so you can see who won without tapping in. Upcoming races carry circuit outline SVGs and country flags to give each card a sense of place.
+You land on the current season. The full race calendar is laid out in front of you: every round, every circuit, every date. Completed races show the podium finishers right on the card, with driver photos and finishing times, so you can see who won without tapping in. Upcoming races carry circuit outline SVGs and country flags to give each card a sense of place. Sprint weekends are marked on the calendar so you know which rounds have the extra race.
 
-Tap into a race and you get the complete picture. The finishing order, the qualifying breakdown with Q1, Q2, and Q3 times, grid positions, time gaps, points scored. FIA-standard status codes (DNF, DNS, DSQ, lapped positions) are all handled correctly. Everything that happened that weekend, in one place.
+Tap into a race and you get the complete picture. The finishing order, sprint results for weekends that have them, the qualifying breakdown with Q1, Q2, and Q3 times, grid positions, time gaps, points scored. FIA-standard status codes (DNF, DNS, DSQ, lapped positions) are all handled correctly. Everything that happened that weekend, in one place.
 
 Switch to the standings and the championship unfolds. Drivers and constructors ranked by points, wins tallied, the title fight told in numbers. Tap any driver's name and you are looking at their full season: every race they entered, where they qualified, where they finished, how many points they scored. Driver photos are pulled from Wikipedia for the detail page, with no placeholder when one is unavailable.
 
@@ -68,8 +68,6 @@ No backend. No authentication. No API keys. Everything runs client-side.
 ---
 
 ## On the Radar
-
-**Sprint results.** Sprint races have been part of the calendar since 2021 and the format is expanding. The data is available through the API but is not yet surfaced in the app. Adding sprint results to the race detail page is the most immediate gap to close.
 
 **Circuit history.** Tap a circuit and see every winner who has ever raced there. Decades of results at one track. This is the most "atlas" feature not yet built, and the one most aligned with what the app is about.
 
