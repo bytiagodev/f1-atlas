@@ -18,6 +18,7 @@ export default function RaceDetail() {
   const { season, round } = useParams();
   const resultsEndpoint = `${season}/${round}/results.json`;
   const qualifyingEndpoint = `${season}/${round}/qualifying.json`;
+  const sprintEndpoint = `${season}/${round}/sprint.json`;
 
   const {
     data: resultsData,
@@ -27,11 +28,14 @@ export default function RaceDetail() {
   const {
     data: qualifyingData,
     loading: qualifyingLoading,
-    error: qualifyingError,
   } = useFetch(qualifyingEndpoint);
+  const {
+    data: sprintData,
+    loading: sprintLoading,
+  } = useFetch(sprintEndpoint);
   const { data: raceData } = useFetch(`${season}/${round}.json`);
 
-  if (resultsLoading || qualifyingLoading) return <Loader />;
+  if (resultsLoading || qualifyingLoading || sprintLoading) return <Loader />;
   if (resultsError) return <ErrorMessage message={resultsError} />;
 
   const race = resultsData?.RaceTable?.Races?.[0];
@@ -39,6 +43,9 @@ export default function RaceDetail() {
   const winnerLaps = parseInt(results[0]?.laps ?? 0);
   const qualifying =
     qualifyingData?.RaceTable?.Races?.[0]?.QualifyingResults ?? [];
+  const sprintResults =
+    sprintData?.RaceTable?.Races?.[0]?.SprintResults ?? [];
+  const sprintWinnerLaps = parseInt(sprintResults[0]?.laps ?? 0);
 
   if (!race) {
     const raceDate = raceData?.RaceTable?.Races?.[0]?.date;
@@ -124,6 +131,56 @@ export default function RaceDetail() {
           </table>
         </div>
       </section>
+
+      {sprintResults.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-xs font-medium tracking-widest uppercase text-[#8b95a5] mb-4">
+            Sprint Results
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-left text-[#8b95a5] text-xs tracking-widest uppercase border-b border-white/[0.08]">
+                  <th className="pb-3 pr-4 font-medium">Position</th>
+                  <th className="pb-3 pr-4 font-medium">Driver</th>
+                  <th className="pb-3 pr-4 font-medium">Constructor</th>
+                  <th className="pb-3 pr-4 font-medium">Time / Status</th>
+                  <th className="pb-3 font-medium text-right">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sprintResults.map((result) => (
+                    <tr
+                      key={result.position}
+                      className="border-b border-white/[0.04]"
+                    >
+                      <td className="py-2.5 pr-4 text-white/50">
+                        {result.position}
+                      </td>
+                      <td className="py-2.5 pr-4 font-medium">
+                        <Link
+                          to={`/driver/${season}/${result.Driver.driverId}`}
+                          className="hover:text-white/70 transition-colors"
+                        >
+                          {result.Driver.givenName} {result.Driver.familyName}
+                        </Link>
+                      </td>
+                      <td className="py-2.5 pr-4 text-white/45">
+                        {result.Constructor.name}
+                      </td>
+                      <td className="py-2.5 pr-4 text-white/50">
+                        {formatStatus(result, sprintWinnerLaps)}
+                      </td>
+                      <td className="py-2.5 text-right font-medium">
+                        {result.points}
+                      </td>
+                    </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
       <section className="mb-12">
         <h2 className="text-xs font-medium tracking-widest uppercase text-[#8b95a5] mb-4">

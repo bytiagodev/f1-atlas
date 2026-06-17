@@ -137,6 +137,11 @@ export default function RaceCard({ race, variant, podium }) {
 
         <div className="flex-1" />
 
+        {race.Sprint && (
+          <span className="text-[11px] tracking-[0.15em] uppercase text-white/50">
+            SPRINT WEEKEND
+          </span>
+        )}
         <span className="text-2xl font-bold text-white tracking-wide">
           {formatDateRange(race.date)}
         </span>
@@ -188,6 +193,11 @@ export default function RaceCard({ race, variant, podium }) {
 
         <div className="flex-1" />
 
+        {race.Sprint && (
+          <span className="text-[11px] tracking-[0.15em] uppercase text-[#8b95a5]">
+            SPRINT WEEKEND
+          </span>
+        )}
         <span className="text-2xl font-bold text-white tracking-wide">
           {formatDateRange(race.date)}
         </span>
