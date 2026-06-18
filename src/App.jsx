@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import RaceDetail from "./pages/RaceDetail";
 import Standings from "./pages/Standings";
 import DriverDetail from "./pages/DriverDetail";
+import Circuits from "./pages/Circuits";
+import CircuitDetail from "./pages/CircuitDetail";
 import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="/race/:season/:round" element={<RaceDetail />} />
           <Route path="/standings" element={<Standings />} />
           <Route path="/driver/:season/:driverId" element={<DriverDetail />} />
+          <Route path="/circuits" element={<Circuits />} />
+          <Route path="/circuits/:circuitId" element={<CircuitDetail />} />
           <Route
             path="*"
             element={<ErrorMessage message="Page not found." isError={false} />}

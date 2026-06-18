@@ -2,15 +2,6 @@
   <img src="./docs/f1-atlas-banner.webp" alt="F1 Atlas" width="100%"/>
 </p>
 
-<h1 align="center">F1 Atlas</h1>
-<h3 align="center">Every season. Every race. Every driver.</h3>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/since-1950-e10600?style=for-the-badge&labelColor=15151e" />
-  <img src="https://img.shields.io/badge/75+-seasons-white?style=for-the-badge&labelColor=15151e" />
-  <img src="https://img.shields.io/badge/open-data-e10600?style=for-the-badge&labelColor=15151e" />
-</p>
-
 <p align="center">
   <a href="https://bytiagodev.github.io/f1-atlas"><strong>[ View Live ]</strong></a>
 </p>
@@ -19,9 +10,7 @@
 
 ## The Atlas
 
-Formula 1 has been racing since 1950. That is over seven decades of grand prix weekends, world champions, legendary circuits, and teams that came and went. F1 Atlas puts all of it in one place.
-
-This is not a live race tracker. It is not a fan wiki. It is an atlas. You open it, you pick a year, and you start exploring. The data does the talking.
+Formula 1 has been racing since 1950. That is over seven decades of grand prix weekends, world champions, legendary circuits, and teams that came and went. F1 Atlas puts all of it in one place. You open it, you pick a year, and you start exploring.
 
 ---
 
@@ -33,19 +22,21 @@ Tap into a race and you get the complete picture. The finishing order, sprint re
 
 Switch to the standings and the championship unfolds. Drivers and constructors ranked by points, wins tallied, the title fight told in numbers. Tap any driver's name and you are looking at their full season: every race they entered, where they qualified, where they finished, how many points they scored. Driver photos are pulled from Wikipedia for the detail page, with no placeholder when one is unavailable.
 
+The circuits tab is the most "atlas" part of the app. A searchable index of every circuit that has ever hosted a Formula 1 race, sorted by country. Tap any circuit and you get its full history: the circuit outline, debut year, total races held, how many different drivers have won there, and who has won the most. Below the stats, a complete winners table lists every race winner at that circuit from the most recent back to the first, with links through to each race and each driver's season profile.
+
 Then there is the season selector. Change the year and the entire app updates. 2024. 2012. 1988. 1950. Same interface, different era. Over seven decades of racing, all navigable from a single dropdown.
 
 ---
 
 ## Design Direction
 
-The visual language is deliberate. F1 Atlas is designed to feel like a race programme, not a TV broadcast overlay.
+F1 Atlas is designed to feel like a race programme, not a TV broadcast overlay.
 
-The palette is dark and restrained. A deep background (`#15151e`) with slightly lifted surface cards (`#12121a`), secondary text in muted grey (`#8b95a5`), and F1 red (`#e10600`) used only where it earns attention: the wordmark accent, active states, error messages. No team-colour gradients. No glassmorphism. No hero images of cars.
+The palette is dark and restrained. A deep background (`#15151e`) with slightly lifted surface cards (`#12121a`), secondary text in muted grey (`#8b95a5`), and F1 red (`#e10600`) used only where it earns attention: the wordmark accent, active states, error messages.
 
 Typography is set in [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk), a geometric sans-serif with a technical character that fits the sport. Labels, headers, navigation, and metadata are all uppercase with wide letter-spacing. Content text (driver names, race names) stays in normal case for readability.
 
-The race cards on the home page come in three states. Completed races carry a checkered-flag date pill and a podium bar showing the top three finishers with driver headshots pulled from the F1 Cloudinary CDN. The next race is highlighted with a distinct blue background. Upcoming races show the circuit outline and date. Circuit SVGs are sourced from [julesr0y/f1-circuits-svg](https://github.com/julesr0y/f1-circuits-svg) (CC-BY-4.0) and rendered inline with no additional network requests.
+The race cards on the home page come in three states. Completed races carry a checkered-flag date pill and a podium bar showing the top three finishers with driver headshots pulled from the F1 Cloudinary CDN. The next race is highlighted with a distinct blue background. Upcoming races show the circuit outline and date. Circuit SVGs are sourced from [julesr0y/f1-circuits-svg](https://github.com/julesr0y/f1-circuits-svg) (CC-BY-4.0) and rendered inline with no additional network requests. All 79 circuits in F1 history are covered.
 
 Country flags come from [flagcdn.com](https://flagcdn.com), covering both the current calendar and historical venues back to the 1950s.
 
@@ -64,12 +55,6 @@ Everything is responsive. Tables scroll horizontally on narrow screens. The driv
 | **The garage** | GitHub Pages |
 
 No backend. No authentication. No API keys. Everything runs client-side.
-
----
-
-## On the Radar
-
-**Circuit history.** Tap a circuit and see every winner who has ever raced there. Decades of results at one track. This is the most "atlas" feature not yet built, and the one most aligned with what the app is about.
 
 ---
 
